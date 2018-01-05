@@ -1,4 +1,7 @@
 import java.util.Scanner;
+// algorithm: 1.ask how many number to calculate -> n number
+// 2. loop n times: ask each number and ask plus, minux, multiply or divide, then calculate
+// 3. print result and ask to do it again
 
 public class calculate
 {
@@ -18,13 +21,13 @@ public class calculate
 		read.close();
 	}
 
-	public static int askNumber() // function that ask how many number the user wants to "deal" with
+	public static int askNumber() // method that ask how many number the user wants to calculate
 	{
 		Scanner input = new Scanner(System.in);
 		System.out.print("How many numbers: ");
 		int nu;
 		nu = input.nextInt();
-		input.close(); // close the input (scanner) to avoid some bugs
+		input.close(); // close the input (scanner) to avoid any bugs
 		return nu;
 	}
 
