@@ -1,41 +1,64 @@
 import java.util.*;
+
 class Solution{
    
    public static void main(String []argh)
    {
       Scanner sc = new Scanner(System.in);
       
-      while (sc.hasNext()) {
-         String input=sc.next();
-         //Complete the code
+      while (sc.hasNext()) 
+      {
+          String input=sc.next();
+          //Complete the code
           String[] open = {"[","{","("};
           String[] close = {"]","}",")"};
-          for(int passLeft = 0; passLeft < input.length();passLeft++)
+          String output = "false";
+          String copyString = input;
+          int pos;
+          for(int charac = 0; charac < input.length() / 2; charac++)
           {
-              pos = checkL(open,input,passLeft);
-              if(pos != -1)
+              if (input.length() / 2 != Math.round(input.length() / 2)) // check if input's length is even or not
               {
-                  for(int passRight = input.length() - 1; passRight > passLeft; passRight--)
-                  {
-                      pos2 = checkL(close, input,passRight);
-                      if
-                  }
+                  break;
+              }
+              
+              pos = checkL(copyString.substring(charac, charac + 1),open);
+              if (pos == -1)
+              {
+                  output = "false";
+                  break;
+              }
+              if(close[pos].equals(copyString.substring(copyString.length() - 1, copyString.length() )))
+              {
+                  output = "true";
+                  copyString = copyString.substring(1,copyString.length() - 1);
+              }
+              
+              else if(close[pos].equals(copyString.substring(1,2)))
+              {
+                  output = "true";
+                  copyString = copyString.substring(2,copyString.length());
+              }
+
+              else
+              {
+                  output = "false";
+                  break;
               }
           }
+          System.out.println(output);
       }
-      
    }
    
-    public static int checkL(String[] list_p, String read,int pass)
+    public static int checkL(String word, String[] open)
     {
-        for(int x = 0; x < 3; x++)
+        for(int pos = 0; pos < 3; pos++)
         {
-            if(list_p[x].equals(read.substring(pass,pass + 1)))
+            if(word.equals(open[pos]))
             {
-                return x;
+                return pos;
             }
         }
         return -1;
     }
 }
-
