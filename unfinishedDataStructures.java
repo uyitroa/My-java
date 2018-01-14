@@ -15,9 +15,12 @@ class Solution{
           String output = "false";
           String copyString = input;
           int pos;
-          for(int charac = 0; charac < input.length() / 2; charac++)
+          int charac = 0;
+          while(copyString.length() != 0)
           {
-              if (input.length() / 2 != Math.round(input.length() / 2)) // check if input's length is even or not
+              float compare = (float) input.length() / 2;
+              float compared = Math.round(input.length() / 2);
+              if (compare != compared) // check if input's length is even or not
               {
                   break;
               }
